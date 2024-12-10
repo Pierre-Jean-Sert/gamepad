@@ -15,3 +15,9 @@
   cursor: pointer;
   font-size: 14px;
 }
+
+.paging-page {
+  background-color: #ff4655;
+  padding: 4px;
+  border-radius: 4px;
+}

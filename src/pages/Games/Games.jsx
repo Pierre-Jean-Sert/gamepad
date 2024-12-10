@@ -89,7 +89,9 @@ function Games() {
             type="text"
             placeholder="Search for a game..."
             onChange={(event) => {
+              setIsLoading(true);
               setSearch(event.target.value);
+              console.log("Recherche", search);
               const newUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${search}`;
               setUrl(newUrl);
               setIsSearching(true);
@@ -115,7 +117,7 @@ function Games() {
               </div>
             ) : (
               <p className="games-search-comment">
-                Search {(data.count * 20).toLocaleString("fr-FR")} games
+                Search {data.count.toLocaleString("fr-FR")} games
               </p>
             )}
           </>
