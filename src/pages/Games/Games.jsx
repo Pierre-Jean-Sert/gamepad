@@ -21,6 +21,7 @@ import noImage from "../../assets/image-not-found.webp";
 
 //! Components import
 import Filters from "../../components/Filters";
+import Paging from "../../components/Paging";
 
 //! Contexts
 
@@ -41,7 +42,7 @@ function Games() {
   const defaultUrl = `https://api.rawg.io/api/games?key=${apiKey}&ordering=released`;
   const [url, setUrl] = useState(defaultUrl);
 
-  //useEffect to recover data from backend
+  //useEffect to recover data from Rawg API
   useEffect(() => {
     //
     const fetchData = async () => {
@@ -100,9 +101,7 @@ function Games() {
         </div>
 
         {/* Search comment */}
-        {isLoading ? (
-          <p>En cours de chargement...</p>
-        ) : (
+        {isLoading || (
           <>
             {isSearching ? (
               <div className="games-is-searching">
@@ -126,11 +125,25 @@ function Games() {
       {/* Game list */}
       <section className="games-second-bloc">
         {isLoading ? (
-          <p>En cours de chargement...</p>
+          <div className="loader-container">
+            <div className="loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         ) : (
           <>
-            {/* Game search filters */}
-            {isSearching ? <Filters></Filters> : <h2>Most Relevance Games</h2>}
+            {/* Game search filters with component */}
+            {isSearching ? (
+              <Filters
+                setUrl={setUrl}
+                apiKey={apiKey}
+                search={search}
+              ></Filters>
+            ) : (
+              <h2>Most Relevance Games</h2>
+            )}
 
             {/* Game map */}
             <div className="games-map">
@@ -155,28 +168,15 @@ function Games() {
               })}
             </div>
 
-            {/* Game paging TODO */}
-            <div className="games-pagin">
-              <i
-                className="fa-solid fa-chevron-left"
-                onClick={() => {
-                  if (data.previous) {
-                    setUrl(data.previous);
-                    setPageNumber(pageNumber - 1);
-                  }
-                }}
-              ></i>
-              {pageNumber}
-              <i
-                className="fa-solid fa-chevron-right"
-                onClick={() => {
-                  if (data.next) {
-                    setUrl(data.next);
-                    setPageNumber(pageNumber + 1);
-                  }
-                }}
-              ></i>
-            </div>
+            {/* Game paging */}
+            <Paging
+              data={data}
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              setUrl={setUrl}
+              setIsLoading={setIsLoading}
+              lastPageNumber={lastPageNumber}
+            ></Paging>
           </>
         )}
       </section>

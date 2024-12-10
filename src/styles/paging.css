@@ -1,0 +1,17 @@
+/* PAGING CSS */
+
+.paging {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 18px;
+
+  padding-bottom: 20px;
+}
+
+.paging i {
+  cursor: pointer;
+  font-size: 14px;
+}
