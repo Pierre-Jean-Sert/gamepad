@@ -14,7 +14,7 @@ import axios from "axios";
 
 //! Hooks import
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //! Images
 import logo from "../../assets/gaming-logo.png";
@@ -29,6 +29,8 @@ import Paging from "../../components/Games/Paging";
 //* GAMES FUNCTION
 function Games() {
   //
+  // Def navigate
+  const navigate = useNavigate();
 
   // States
   const [data, setData] = useState({});
@@ -156,25 +158,26 @@ function Games() {
                 //
                 return (
                   <>
-                    <Link
-                      to="/game"
-                      state={{
-                        gameId: game.id,
+                    <article
+                      key={index}
+                      className="games-article"
+                      onClick={() => {
+                        navigate("/game", {
+                          state: { gameId: game.id, gameName: game.name },
+                        });
                       }}
                     >
-                      <article key={index} className="games-article">
-                        <img
-                          key={game.id}
-                          src={
-                            game.background_image
-                              ? game.background_image
-                              : noImage
-                          }
-                          alt="Game image"
-                        ></img>
-                        <p key={game.name}>{game.name}</p>
-                      </article>
-                    </Link>
+                      <img
+                        key={game.id}
+                        src={
+                          game.background_image
+                            ? game.background_image
+                            : noImage
+                        }
+                        alt="Game image"
+                      ></img>
+                      <p key={game.name}>{game.name}</p>
+                    </article>
                   </>
                 );
               })}

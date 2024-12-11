@@ -37,7 +37,7 @@ function App() {
           <Route path="/" element={<Games></Games>}></Route>
 
           {/* GAME */}
-          <Route path="/" element={<Game></Game>}></Route>
+          <Route path="/game" element={<Game></Game>}></Route>
         </Routes>
 
         {/* FOOTER */}
