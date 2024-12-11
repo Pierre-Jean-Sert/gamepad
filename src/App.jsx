@@ -14,10 +14,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //! Pages import
 import Games from "./pages/Games/Games";
+import Game from "./pages/Game/Game";
 
 //! Components import
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/General/Header";
+import Footer from "./components/General/Footer";
 
 //! Contexts
 
@@ -34,6 +35,9 @@ function App() {
         <Routes>
           {/* HOME */}
           <Route path="/" element={<Games></Games>}></Route>
+
+          {/* GAME */}
+          <Route path="/" element={<Game></Game>}></Route>
         </Routes>
 
         {/* FOOTER */}

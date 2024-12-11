@@ -7,23 +7,21 @@
 */
 
 //! Style import
-import "../styles/header.css";
+import "./header.css";
 
 //! Libraries import
 
 //! Hooks import
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //! Contexts
 
 //! Images
-import logo from "../assets/gaming-logo.png";
+import logo from "../../assets/gaming-logo.png";
 
 //* HEADER FUNCTION
 function Header() {
   //
-  // Def navigate
-  const navigate = useNavigate();
 
   // Return
   return (

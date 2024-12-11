@@ -7,7 +7,7 @@
 */
 
 //! Style import
-import "../styles/paging.css";
+import "./paging.css";
 
 //! Hooks import
 import { useState } from "react";
@@ -23,43 +23,14 @@ function Paging({
 }) {
   //
 
-  // Paging calculator
+  // TODO Paging calculator
   function pagingCalculator() {
     //
     const pageTab = [];
     //
-    if (pageNumber <= 3 && lastPageNumber >= 6) {
-      pageTab.push(
-        1,
-        2,
-        3,
-        "...",
-        lastPageNumber - 2,
-        lastPageNumber - 1,
-        lastPageNumber
-      );
-      return pageTab;
-      //
-    } else if (pageNumber <= 3 && lastPageNumber < 6) {
-      for (let i = 1; i <= lastPageNumber; i++) {
-        pageTab.push(i);
-      }
-      return pageTab;
-      //
-    } else {
-      pageTab.push(
-        pageNumber - 3,
-        pageNumber - 2,
-        pageNumber - 1,
-        "-",
-        pageNumber,
-        "-",
-        lastPageNumber - 2,
-        lastPageNumber - 1,
-        lastPageNumber
-      );
-      return pageTab;
-    }
+
+    // Return
+    return pageTab;
   }
 
   // Paging and call paging calculator

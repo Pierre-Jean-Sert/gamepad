@@ -7,21 +7,22 @@
 */
 
 //! Style import
-import "../../styles/games.css";
+import "./games.css";
 
 //! Libraries import
 import axios from "axios";
 
 //! Hooks import
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 //! Images
 import logo from "../../assets/gaming-logo.png";
 import noImage from "../../assets/image-not-found.webp";
 
 //! Components import
-import Filters from "../../components/Filters";
-import Paging from "../../components/Paging";
+import Filters from "../../components/Games/Filters";
+import Paging from "../../components/Games/Paging";
 
 //! Contexts
 
@@ -90,9 +91,11 @@ function Games() {
             placeholder="Search for a game..."
             onChange={(event) => {
               setIsLoading(true);
-              setSearch(event.target.value);
-              console.log("Recherche", search);
-              const newUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${search}`;
+
+              const userSearch = event.target.value;
+              setSearch(userSearch);
+
+              const newUrl = `https://api.rawg.io/api/games?key=${apiKey}&search=${userSearch}`;
               setUrl(newUrl);
               setIsSearching(true);
               setPageNumber(1);
@@ -112,7 +115,7 @@ function Games() {
                 </p>
 
                 <p className="games-search-comment">
-                  {(data.count * 20).toLocaleString("fr-FR")} games
+                  {data.count.toLocaleString("fr-FR")} games
                 </p>
               </div>
             ) : (
@@ -153,18 +156,25 @@ function Games() {
                 //
                 return (
                   <>
-                    <article className="games-article" key={index}>
-                      <img
-                        key={game.id}
-                        src={
-                          game.background_image
-                            ? game.background_image
-                            : noImage
-                        }
-                        alt={game.name}
-                      ></img>
-                      <p key={game.name}>{game.name}</p>
-                    </article>
+                    <Link
+                      to="/game"
+                      state={{
+                        gameId: game.id,
+                      }}
+                    >
+                      <article key={index} className="games-article">
+                        <img
+                          key={game.id}
+                          src={
+                            game.background_image
+                              ? game.background_image
+                              : noImage
+                          }
+                          alt="Game image"
+                        ></img>
+                        <p key={game.name}>{game.name}</p>
+                      </article>
+                    </Link>
                   </>
                 );
               })}

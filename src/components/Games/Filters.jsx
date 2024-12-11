@@ -7,7 +7,7 @@
 */
 
 //! Style import
-import "../styles/filters.css";
+import "./filters.css";
 
 //! Hooks import
 import { useState } from "react";
