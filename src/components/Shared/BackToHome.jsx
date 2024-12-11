@@ -27,7 +27,7 @@ function BackToHome() {
       }}
     >
       <i className="fa-solid fa-backward"></i>
-      <p>Return to home page </p>
+      <p>Return to game list</p>
     </div>
   );
 }

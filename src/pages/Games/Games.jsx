@@ -14,23 +14,21 @@ import axios from "axios";
 
 //! Hooks import
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
 //! Images
 import logo from "../../assets/gaming-logo.png";
-import noImage from "../../assets/image-not-found.webp";
 
 //! Components import
 import Filters from "../../components/Games/Filters";
 import Paging from "../../components/Games/Paging";
+import GameTab from "../../components/Shared/GameTab";
+import Loader from "../../components/General/Loader";
 
 //! Contexts
 
 //* GAMES FUNCTION
 function Games() {
   //
-  // Def navigate
-  const navigate = useNavigate();
 
   // States
   const [data, setData] = useState({});
@@ -42,7 +40,7 @@ function Games() {
 
   // Rawg API Key and Url
   const apiKey = "afbe33d884cf4ff6a866f2f22446a121";
-  const defaultUrl = `https://api.rawg.io/api/games?key=${apiKey}&ordering=released`;
+  const defaultUrl = `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating`;
   const [url, setUrl] = useState(defaultUrl);
 
   //useEffect to recover data from Rawg API
@@ -132,13 +130,7 @@ function Games() {
       {/* Game list */}
       <section className="games-second-bloc">
         {isLoading ? (
-          <div className="loader-container">
-            <div className="loader">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
+          <Loader></Loader>
         ) : (
           <>
             {/* Game search filters with component */}
@@ -153,35 +145,7 @@ function Games() {
             )}
 
             {/* Game map */}
-            <div className="games-map">
-              {data.results.map((game, index) => {
-                //
-                return (
-                  <>
-                    <article
-                      key={index}
-                      className="games-article"
-                      onClick={() => {
-                        navigate("/game", {
-                          state: { gameId: game.id, gameName: game.name },
-                        });
-                      }}
-                    >
-                      <img
-                        key={game.id}
-                        src={
-                          game.background_image
-                            ? game.background_image
-                            : noImage
-                        }
-                        alt="Game image"
-                      ></img>
-                      <p key={game.name}>{game.name}</p>
-                    </article>
-                  </>
-                );
-              })}
-            </div>
+            <GameTab dataToMap={data.results}></GameTab>
 
             {/* Game paging */}
             <Paging

@@ -2,7 +2,7 @@
 
 * GAMEPAD
 
-* GameDescription Component 
+* Game Description Component 
 
 */
 
@@ -14,6 +14,9 @@ import axios from "axios";
 
 //! Hooks import
 import { useState, useEffect } from "react";
+
+//! Components import
+import Loader from "../General/Loader";
 
 //! Images
 import noImage from "../../assets/image-not-found.webp";
@@ -70,13 +73,7 @@ function GameDescription({ gameId }) {
   return (
     <>
       {isLoading ? (
-        <div className="loader-container">
-          <div className="loader">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
+        <Loader></Loader>
       ) : (
         <div className="gd-bloc">
           {/* Game image */}
@@ -203,7 +200,13 @@ function GameDescription({ gameId }) {
               {/* Age rating */}
               <div className="gd-details-bloc">
                 <p className="gd-details-title">Age rating</p>
-                <p>{data.esrb_rating ? data.esrb_rating.id : "No rating"}</p>
+                {data.esrb_rating ? (
+                  <p>
+                    {data.esrb_rating.id} ({data.esrb_rating.name})
+                  </p>
+                ) : (
+                  <p>No rating</p>
+                )}
               </div>
             </article>
 
