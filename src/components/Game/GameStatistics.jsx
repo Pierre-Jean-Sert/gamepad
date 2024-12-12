@@ -57,16 +57,6 @@ function GameStatistics({ data }) {
       stroke: {
         show: false,
       },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 350,
-            },
-          },
-        },
-      ],
     },
   });
 
@@ -121,7 +111,7 @@ function GameStatistics({ data }) {
             </div>
 
             <div className="gs-social-networks-bloc">
-              <p>Reviews count</p>
+              <p>Reviews</p>
               <div className="gs-rating">
                 {data.reviews_count.toLocaleString("fr-FR")}
               </div>

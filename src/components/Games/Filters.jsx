@@ -119,13 +119,13 @@ function Filters({ setUrl, apiKey, search }) {
             }}
           >
             <option value="">Default</option>
-            <option value="name">Name</option>
-            <option value="released">Released</option>
-            <option value="rating">Rating</option>
-            <option value="metacritic">Metacritic</option>
-            <option value="added">Added</option>
-            <option value="created">Created</option>
-            <option value="updated">Updated</option>
+            <option value="-name">Name</option>
+            <option value="-released">Released</option>
+            <option value="-rating">Rating</option>
+            <option value="-metacritic">Metacritic</option>
+            <option value="-added">Added</option>
+            <option value="-created">Created</option>
+            <option value="-updated">Updated</option>
           </select>
         </div>
         <button

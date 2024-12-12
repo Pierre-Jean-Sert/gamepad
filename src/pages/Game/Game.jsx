@@ -17,10 +17,11 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //! Components import
-import GameDescription from "../../components/Game/GameDescription";
 import BackToHome from "../../components/Shared/BackToHome";
-import GameStatistics from "../../components/Game/GameStatistics";
 import Loader from "../../components/General/Loader";
+import GameDescription from "../../components/Game/GameDescription";
+import GameStatistics from "../../components/Game/GameStatistics";
+import GameTab from "../../components/Shared/GameTab";
 
 //* GAME FUNCTION
 function Game() {
@@ -30,12 +31,15 @@ function Game() {
   const { gameId, gameName } = location.state;
 
   // States
-  const [data, setData] = useState({});
+  const [gameData, setGameData] = useState({});
+  const [similarGameData, setSimilarGameData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   // Rawg API Key and Url
   const apiKey = "afbe33d884cf4ff6a866f2f22446a121";
-  const url = `https://api.rawg.io/api/games/${gameId}?key=${apiKey}`;
+  const gameUrl = `https://api.rawg.io/api/games/${gameId}?key=${apiKey}`;
+  const similarGameUrl = `https://api.rawg.io/api/games/${gameId}/game-series?key=${apiKey}`;
+  console.log(similarGameUrl);
 
   //useEffect to recover data from Rawg API
   useEffect(() => {
@@ -43,11 +47,15 @@ function Game() {
     const fetchData = async () => {
       //
       try {
-        // Axios request
-        const response = await axios.get(url);
+        // Axios requests
+        const gameResponse = await axios.get(gameUrl);
+        const similarGameResponse = await axios.get(similarGameUrl);
 
-        //Response.data stocked in data state
-        setData(response.data);
+        //GameResponse.data stocked in data state
+        setGameData(gameResponse.data);
+
+        //GameResponse.data stocked in data state
+        setSimilarGameData(similarGameResponse.data);
 
         //isLoading => false
         setIsLoading(false);
@@ -60,7 +68,7 @@ function Game() {
 
     //fetchData calling
     fetchData();
-  }, []);
+  }, [gameId]);
 
   // Return
   return (
@@ -74,17 +82,34 @@ function Game() {
 
           {/* Game description component */}
           <section className="game-description-bloc">
-            <h1 className="game-name">{gameName}</h1>
+            <h1 className="game-name ">{gameName}</h1>
             {/* Bottom red border */}
             <div className="game-red-border"></div>
-            <GameDescription data={data}></GameDescription>
+            <GameDescription data={gameData}></GameDescription>
           </section>
 
+          {/* Similar games */}
+          {similarGameData.results.length !== 0 && (
+            <section>
+              <div className="game-statistics-bloc">
+                <h3>In the same series as {gameName}</h3>
+                <p className="game-section-red"></p>
+              </div>
+
+              <div className="sg-general">
+                <GameTab dataToMap={similarGameData.results}></GameTab>
+              </div>
+            </section>
+          )}
+
           {/* Game statistics component */}
-          <section className="game-statistics-bloc">
-            <h3 className="game-h3">What do the players think</h3>
-            <div className="game-red-border-h3"></div>
-            <GameStatistics data={data}></GameStatistics>
+          <section>
+            <div className="game-statistics-bloc">
+              <h3>What do the players think ?</h3>
+              <p className="game-section-red"></p>
+            </div>
+
+            <GameStatistics data={gameData}></GameStatistics>
           </section>
         </main>
       )}

@@ -8,14 +8,15 @@
 
   display: flex;
   flex-direction: column;
+
   gap: 20px;
 
   position: relative;
 }
 
 .game-red-border {
-  border: solid 3px #ff4655;
   width: 200px;
+  border: solid 3px #ff4655;
 
   position: absolute;
   top: 68px;
@@ -28,6 +29,22 @@
   z-index: 2;
 }
 
+/* Similar game bloc */
+
+.sg-general {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  overflow: scroll;
+  gap: 20px;
+}
+
+.sg-general::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 /* Game statistics bloc */
 
 .game-statistics-bloc {
@@ -35,9 +52,10 @@
 
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  gap: 8px;
 
-  position: relative;
+  margin-bottom: 25px;
 }
 
 .game-statistics-bloc h3 {
@@ -48,13 +66,7 @@
   z-index: 2;
 }
 
-.game-red-border-h3 {
+.game-section-red {
   border: solid 3px #ff4655;
-  width: 100px;
-
-  position: absolute;
-  top: 52px;
-  left: 410px;
-
-  z-index: 1;
+  width: 200px;
 }

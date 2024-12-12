@@ -145,7 +145,9 @@ function Games() {
             )}
 
             {/* Game map */}
-            <GameTab dataToMap={data.results}></GameTab>
+            <div className="gt-map">
+              <GameTab dataToMap={data.results}></GameTab>
+            </div>
 
             {/* Game paging */}
             <Paging
