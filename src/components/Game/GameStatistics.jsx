@@ -10,14 +10,12 @@
 import "./game-statistics.css";
 
 //! Libraries import
-import axios from "axios";
 import ReactApexCharts from "react-apexcharts";
 
 //! Hooks import
 import { useState, useEffect } from "react";
 
 //! Components import
-import Loader from "../General/Loader";
 import stars from "../../utils/stars";
 
 //! Images
