@@ -24,7 +24,4 @@ const stars = (rating) => {
   return tab;
 };
 
-const verif = stars();
-console.log(verif);
-
 export default stars;

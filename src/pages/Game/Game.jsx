@@ -39,7 +39,6 @@ function Game() {
   const apiKey = "afbe33d884cf4ff6a866f2f22446a121";
   const gameUrl = `https://api.rawg.io/api/games/${gameId}?key=${apiKey}`;
   const similarGameUrl = `https://api.rawg.io/api/games/${gameId}/game-series?key=${apiKey}`;
-  console.log(similarGameUrl);
 
   //useEffect to recover data from Rawg API
   useEffect(() => {
@@ -68,7 +67,7 @@ function Game() {
 
     //fetchData calling
     fetchData();
-  }, [gameId]);
+  }, [gameUrl, similarGameUrl]);
 
   // Return
   return (
@@ -108,7 +107,6 @@ function Game() {
               <h3>What do the players think ?</h3>
               <p className="game-section-red"></p>
             </div>
-
             <GameStatistics data={gameData}></GameStatistics>
           </section>
         </main>

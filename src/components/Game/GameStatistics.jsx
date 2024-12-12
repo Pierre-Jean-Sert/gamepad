@@ -35,30 +35,42 @@ function GameStatistics({ data }) {
     rating = stars(data.rating);
   }
 
-  // Pie chart data
-  const pieData = data.ratings.map((rating) => rating.count) || [];
-  const pieLegend = data.ratings.map((rating) => rating.title) || [];
+  // States
+  const pieData = data.ratings
+    ? data.ratings.map((rating) => rating.count)
+    : [];
+  const pieLegend = data.ratings
+    ? data.ratings.map((rating) => rating.title)
+    : [];
 
-  // Pie chart options
-  const [chartOptions, setChartOptions] = useState({
-    series: pieData,
-    options: {
-      chart: {
-        type: "donut",
-        offsetY: 20,
-      },
-      labels: pieLegend,
-      legend: {
-        labels: {
-          colors: "#FFFFFF",
+  const [isLoading, setIsLoading] = useState(true);
+  const [chartOptions, setChartOptions] = useState({});
+
+  useEffect(() => {
+    setChartOptions({
+      series: pieData,
+      options: {
+        chart: {
+          type: "donut",
+          offsetY: 20,
         },
-        position: "bottom",
+        labels: pieLegend,
+        legend: {
+          labels: {
+            colors: "#FFFFFF",
+          },
+          position: "bottom",
+        },
+        stroke: {
+          show: false,
+        },
       },
-      stroke: {
-        show: false,
-      },
-    },
-  });
+    });
+
+    setIsLoading(false);
+  }, []);
+
+  // Pie chart data
 
   // Return
   return (
@@ -142,12 +154,16 @@ function GameStatistics({ data }) {
 
         {/* Graphs */}
         <div className="gs-right-bloc">
-          <ReactApexCharts
-            options={chartOptions.options}
-            series={chartOptions.series}
-            type="donut"
-            height={310}
-          />
+          {isLoading ? (
+            ""
+          ) : (
+            <ReactApexCharts
+              options={chartOptions.options}
+              series={chartOptions.series}
+              type="donut"
+              height={310}
+            />
+          )}
         </div>
       </div>
     </>

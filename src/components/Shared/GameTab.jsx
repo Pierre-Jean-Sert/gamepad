@@ -27,25 +27,23 @@ function GameTab({ dataToMap }) {
       {dataToMap.map((game, index) => {
         //
         return (
-          <>
-            <article
-              key={index}
-              className="gt-article"
-              onClick={() => {
-                window.scrollTo(0, 0);
-                navigate("/game", {
-                  state: { gameId: game.id, gameName: game.name },
-                });
-              }}
-            >
-              <img
-                key={game.id}
-                src={game.background_image ? game.background_image : noImage}
-                alt="Game image"
-              ></img>
-              <p key={game.name}>{game.name}</p>
-            </article>
-          </>
+          <article
+            key={index}
+            className="gt-article"
+            onClick={() => {
+              window.scrollTo(0, 0);
+              navigate("/game", {
+                state: { gameId: game.id, gameName: game.name },
+              });
+            }}
+          >
+            <img
+              key={game.id}
+              src={game.background_image ? game.background_image : noImage}
+              alt="Game image"
+            ></img>
+            <p key={game.name}>{game.name}</p>
+          </article>
         );
       })}
     </>

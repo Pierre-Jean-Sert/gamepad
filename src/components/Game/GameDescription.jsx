@@ -78,7 +78,7 @@ function GameDescription({ data }) {
                     result = result + platform.platform.name;
                   }
 
-                  return <span>{result}</span>;
+                  return <span key={index}>{result}</span>;
                 })}
               </p>
             </div>
