@@ -32,9 +32,7 @@ function GameTab({ dataToMap }) {
             className="gt-article"
             onClick={() => {
               window.scrollTo(0, 0);
-              navigate("/game", {
-                state: { gameId: game.id, gameName: game.name },
-              });
+              navigate(`/game/${game.id}`);
             }}
           >
             <img

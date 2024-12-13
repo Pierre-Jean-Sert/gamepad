@@ -13,7 +13,7 @@ import "./game.css";
 import axios from "axios";
 
 //! Hooks import
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //! Components import
@@ -27,8 +27,7 @@ import GameTab from "../../components/Shared/GameTab";
 function Game() {
   //
   // Location destructuring
-  const location = useLocation();
-  const { gameId, gameName } = location.state;
+  const { gameId } = useParams();
 
   // States
   const [gameData, setGameData] = useState({});
@@ -81,7 +80,7 @@ function Game() {
 
           {/* Game description component */}
           <section className="game-description-bloc">
-            <h1 className="game-name ">{gameName}</h1>
+            <h1 className="game-name ">{gameData.name}</h1>
             {/* Bottom red border */}
             <div className="game-red-border"></div>
             <GameDescription data={gameData}></GameDescription>
@@ -91,7 +90,7 @@ function Game() {
           {similarGameData.results.length !== 0 && (
             <section>
               <div className="game-statistics-bloc">
-                <h3>In the same series as {gameName}</h3>
+                <h3>In the same series as {gameData.name}</h3>
                 <p className="game-section-red"></p>
               </div>
 

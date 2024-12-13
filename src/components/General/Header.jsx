@@ -37,7 +37,9 @@ function Header() {
         <Link to="/mycollection">
           <p>My collection</p>
         </Link>
-        <button className="header-button">Login</button>
+        <Link to="/auth">
+          <button className="header-button">Login</button>{" "}
+        </Link>
       </div>
     </header>
   );

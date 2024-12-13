@@ -13,7 +13,7 @@ import "./game-statistics.css";
 import ReactApexCharts from "react-apexcharts";
 
 //! Hooks import
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 //! Components import
 import stars from "../../utils/stars";
@@ -33,7 +33,7 @@ function GameStatistics({ data }) {
     rating = stars(data.rating);
   }
 
-  // States
+  // Pied data
   const pieData = data.ratings
     ? data.ratings.map((rating) => rating.count)
     : [];
@@ -41,34 +41,25 @@ function GameStatistics({ data }) {
     ? data.ratings.map((rating) => rating.title)
     : [];
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [chartOptions, setChartOptions] = useState({});
-
-  useEffect(() => {
-    setChartOptions({
-      series: pieData,
-      options: {
-        chart: {
-          type: "donut",
-          offsetY: 20,
-        },
-        labels: pieLegend,
-        legend: {
-          labels: {
-            colors: "#FFFFFF",
-          },
-          position: "bottom",
-        },
-        stroke: {
-          show: false,
-        },
+  const [chartOptions, setChartOptions] = useState({
+    series: pieData,
+    options: {
+      chart: {
+        type: "donut",
+        offsetY: 20,
       },
-    });
-
-    setIsLoading(false);
-  }, []);
-
-  // Pie chart data
+      labels: pieLegend,
+      legend: {
+        labels: {
+          colors: "#FFFFFF",
+        },
+        position: "bottom",
+      },
+      stroke: {
+        show: false,
+      },
+    },
+  });
 
   // Return
   return (
@@ -150,18 +141,14 @@ function GameStatistics({ data }) {
           </div>
         </div>
 
-        {/* Graphs */}
+        {/* Graph */}
         <div className="gs-right-bloc">
-          {isLoading ? (
-            ""
-          ) : (
-            <ReactApexCharts
-              options={chartOptions.options}
-              series={chartOptions.series}
-              type="donut"
-              height={310}
-            />
-          )}
+          <ReactApexCharts
+            options={chartOptions.options}
+            series={chartOptions.series}
+            type="donut"
+            height={310}
+          />
         </div>
       </div>
     </>

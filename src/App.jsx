@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //! Pages import
 import Games from "./pages/Games/Games";
 import Game from "./pages/Game/Game";
+import Auth from "./pages/Auth/Auth";
 
 //! Components import
 import Header from "./components/General/Header";
@@ -37,7 +38,10 @@ function App() {
           <Route path="/" element={<Games></Games>}></Route>
 
           {/* GAME */}
-          <Route path="/game" element={<Game></Game>}></Route>
+          <Route path="/game/:gameId" element={<Game></Game>}></Route>
+
+          {/* AUTH */}
+          <Route path="/auth" element={<Auth></Auth>}></Route>
         </Routes>
 
         {/* FOOTER */}
