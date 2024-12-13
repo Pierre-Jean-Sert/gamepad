@@ -2,7 +2,7 @@
 
 * GAMEPAD
 
-* Log in component
+* Sign up component
 */
 
 //! Style import
@@ -16,8 +16,8 @@ import { useState, useEffect } from "react";
 
 //! Components import
 
-//* LOGIN FUNCTION
-function Login({ setComponentMgmt }) {
+//* SIGNUP FUNCTION
+function Signup({ setComponentMgmt }) {
   //
   // States
   const [email, setEmail] = useState("");
@@ -26,7 +26,7 @@ function Login({ setComponentMgmt }) {
   // Return
   return (
     <div className="logSup-main-bloc">
-      <h2>Login</h2>
+      <h2>Signup</h2>
 
       <form className="logSup-login-form">
         <div>
@@ -55,14 +55,14 @@ function Login({ setComponentMgmt }) {
         </div>
 
         <div>
-          <button className="logSup-large-button">Login</button>
+          <button className="logSup-large-button">Signup</button>
           <p
             className="logSup-link"
             onClick={() => {
-              setComponentMgmt("signup");
+              setComponentMgmt("login");
             }}
           >
-            Don't have an account yet ?
+            Already have an account ?
           </p>
         </div>
       </form>
@@ -70,4 +70,4 @@ function Login({ setComponentMgmt }) {
   );
 }
 
-export default Login;
+export default Signup;

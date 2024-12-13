@@ -67,12 +67,16 @@
 
 .auth-paragraph div {
   display: flex;
+  align-items: center;
   gap: 10px;
 }
 
 /* Right bloc */
 
 .auth-right-bloc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   flex: 1;
 
   padding: 30px;

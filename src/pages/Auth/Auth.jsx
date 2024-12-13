@@ -8,15 +8,21 @@
 //! Style import
 import "./auth.css";
 
+//! Hooks import
+import { useState } from "react";
+
 //! Images
 import logo from "../../assets/gaming-logo.png";
 
 //! Components import
 import Login from "../../components/Auth/Login";
+import Signup from "../../components/Auth/Signup";
 
 //* AUTH FUNCTION
 function Auth() {
   //
+  // States
+  const [componentMgmt, setComponentMgmt] = useState("login");
 
   // Return
   return (
@@ -27,7 +33,7 @@ function Auth() {
           {/*  Logo */}
           <img className="auth-logo" src={logo} alt="Gamepad logo" />
 
-          <div className="auth-title">
+          <div>
             <h2>How it works ?</h2>
             <p className="auth-section-red "></p>
           </div>
@@ -55,7 +61,14 @@ function Auth() {
         </div>
 
         {/*  Right bloc */}
-        <div className="auth-right-bloc">Login ou signin</div>
+        <div className="auth-right-bloc">
+          {componentMgmt === "login" && (
+            <Login setComponentMgmt={setComponentMgmt}></Login>
+          )}
+          {componentMgmt === "signup" && (
+            <Signup setComponentMgmt={setComponentMgmt}></Signup>
+          )}
+        </div>
       </div>
     </main>
   );

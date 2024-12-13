@@ -41,7 +41,7 @@ function GameStatistics({ data }) {
     ? data.ratings.map((rating) => rating.title)
     : [];
 
-  const [chartOptions, setChartOptions] = useState({
+  const chartOptions = {
     series: pieData,
     options: {
       chart: {
@@ -59,7 +59,7 @@ function GameStatistics({ data }) {
         show: false,
       },
     },
-  });
+  };
 
   // Return
   return (
