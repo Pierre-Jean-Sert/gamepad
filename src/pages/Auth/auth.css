@@ -19,11 +19,12 @@
 .auth-left-bloc {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  justify-content: center;
+  gap: 60px;
   flex: 1;
 
   padding: 30px;
-  min-height: 500px;
+  min-height: 550px;
 
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -41,12 +42,6 @@
     #434343,
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.auth-logo {
-  width: 80px;
-  height: 60px;
-  object-fit: cover;
 }
 
 .auth-left-bloc h2 {
@@ -80,7 +75,7 @@
   flex: 1;
 
   padding: 30px;
-  min-height: 500px;
+  min-height: 550px;
 
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;

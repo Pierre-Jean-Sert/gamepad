@@ -141,7 +141,7 @@ function Games() {
                 search={search}
               ></Filters>
             ) : (
-              <h2>Most Relevance Games</h2>
+              <h2>Top Rated Games</h2>
             )}
 
             {/* Game map */}

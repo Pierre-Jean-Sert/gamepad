@@ -19,13 +19,13 @@
   gap: 30px;
 }
 
-.logSup-login-form > div:nth-child(1) {
+.logSup-login-form-first-bloc {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
-.logSup-login-form > div:nth-child(2) {
+.logSup-login-form-connection-bloc {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,4 +66,55 @@
 
 .logSup-link:hover {
   color: #ff4655;
+}
+
+/* SIGNUP CSS */
+
+.logSup-signup {
+  display: flex;
+  gap: 10px;
+}
+
+.logSup-signup input {
+  flex: 1;
+  width: 50px;
+}
+
+.logSup-signup p {
+  flex: 1;
+}
+
+.logSup-add-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logSup-add-image > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+
+  font-size: 16px;
+
+  padding: 10px;
+
+  cursor: pointer;
+}
+
+.logSup-add-image > input {
+  display: none;
+}
+
+.logSup-preview-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }

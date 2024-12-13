@@ -11,9 +11,6 @@ import "./auth.css";
 //! Hooks import
 import { useState } from "react";
 
-//! Images
-import logo from "../../assets/gaming-logo.png";
-
 //! Components import
 import Login from "../../components/Auth/Login";
 import Signup from "../../components/Auth/Signup";
@@ -30,9 +27,6 @@ function Auth() {
       <div className="auth-bloc">
         {/*  Left bloc */}
         <div className="auth-left-bloc">
-          {/*  Logo */}
-          <img className="auth-logo" src={logo} alt="Gamepad logo" />
-
           <div>
             <h2>How it works ?</h2>
             <p className="auth-section-red "></p>

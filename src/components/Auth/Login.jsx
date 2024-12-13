@@ -29,7 +29,7 @@ function Login({ setComponentMgmt }) {
       <h2>Login</h2>
 
       <form className="logSup-login-form">
-        <div>
+        <div className="logSup-login-form-first-bloc">
           <input
             className="logSup-large-input"
             id="email"
@@ -54,7 +54,7 @@ function Login({ setComponentMgmt }) {
           ></input>
         </div>
 
-        <div>
+        <div className="logSup-login-form-connection-bloc">
           <button className="logSup-large-button">Login</button>
           <p
             className="logSup-link"
